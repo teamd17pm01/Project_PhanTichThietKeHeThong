@@ -1,0 +1,205 @@
+USE [QLHT]
+GO
+/****** Object:  Table [dbo].[DKMH]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DKMH](
+	[MaDKMH] [int] IDENTITY(1,1) NOT NULL,
+	[MaMH] [varchar](10) NULL,
+	[MaNV] [varchar](10) NULL,
+	[MaPhong] [varchar](20) NOT NULL,
+	[Thu] [nvarchar](20) NOT NULL,
+	[TietBatDau] [int] NOT NULL,
+	[TietKetThuc] [int] NOT NULL,
+	[NgayBatDau] [varchar](10) NOT NULL,
+	[NgayKetThuc] [varchar](10) NOT NULL,
+	[DaDK] [int] NOT NULL,
+	[SiSo] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MaDKMH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DSDKMH]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DSDKMH](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MaDKMH] [varchar](20) NOT NULL,
+	[MaMH] [varchar](20) NOT NULL,
+	[MaSV] [varchar](20) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[MonHoc]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[MonHoc](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MaMH] [varchar](10) NOT NULL,
+	[TenMH] [nvarchar](50) NOT NULL,
+	[SoTinChi] [int] NOT NULL,
+ CONSTRAINT [pk_primary] PRIMARY KEY CLUSTERED 
+(
+	[MaMH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[NhanVien]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[NhanVien](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MaNV] [varchar](10) NOT NULL,
+	[TenNV] [nvarchar](50) NOT NULL,
+	[ChucVu] [nvarchar](50) NOT NULL,
+	[GioiTinh] [nvarchar](5) NOT NULL,
+	[BacDaoTao] [nvarchar](50) NOT NULL,
+	[ChuyenNganh] [nvarchar](50) NOT NULL,
+	[NgaySinh] [date] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[tbl_giaovien]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tbl_giaovien](
+	[MAGV] [varchar](10) NOT NULL,
+	[TENGV] [nvarchar](50) NULL,
+ CONSTRAINT [fk_primary] PRIMARY KEY CLUSTERED 
+(
+	[MAGV] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[tbl_infor]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tbl_infor](
+	[MASV] [varchar](10) NULL,
+	[TENSV] [nvarchar](50) NULL,
+	[NGAYSINH] [date] NULL,
+	[QUEQUAN] [nvarchar](100) NULL,
+	[DANTOC] [nvarchar](50) NULL,
+	[DIACHI] [nvarchar](200) NULL,
+	[SDT] [varchar](10) NULL,
+	[EMAIL] [nvarchar](200) NULL,
+	[HOTENCHA] [nvarchar](50) NULL,
+	[HOTENME] [nvarchar](50) NULL,
+	[SDTCHA] [varchar](10) NULL,
+	[SDTME] [varchar](10) NULL,
+	[NGHENGHIEPCHA] [nvarchar](50) NULL,
+	[NGHENGHIEPME] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[tbl_tkb]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tbl_tkb](
+	[IDUSER] [varchar](10) NULL,
+	[MAMH] [varchar](50) NULL,
+	[TENMH] [nvarchar](200) NULL,
+	[THU] [int] NULL,
+	[MAGV] [varchar](10) NULL,
+	[PHONG] [varchar](50) NULL,
+	[TENLOPHOC] [varchar](50) NULL,
+	[TIETBD] [int] NULL,
+	[SOLUONGTIET] [int] NULL,
+	[TGBD] [date] NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[tbl_user]    Script Date: 5/23/2019 9:12:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tbl_user](
+	[ID] [varchar](10) NOT NULL,
+	[USERNAME] [nvarchar](50) NULL,
+	[PASSWORD] [nvarchar](50) NULL,
+	[PERMISS] [bit] NULL,
+ CONSTRAINT [fk_primary_IdUser] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+ALTER TABLE [dbo].[DKMH]  WITH CHECK ADD  CONSTRAINT [frk_foreign] FOREIGN KEY([MaMH])
+REFERENCES [dbo].[MonHoc] ([MaMH])
+GO
+ALTER TABLE [dbo].[DKMH] CHECK CONSTRAINT [frk_foreign]
+GO
+ALTER TABLE [dbo].[tbl_infor]  WITH CHECK ADD  CONSTRAINT [fk_foregin_masv] FOREIGN KEY([MASV])
+REFERENCES [dbo].[tbl_user] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_infor] CHECK CONSTRAINT [fk_foregin_masv]
+GO
+ALTER TABLE [dbo].[tbl_tkb]  WITH CHECK ADD FOREIGN KEY([MAGV])
+REFERENCES [dbo].[tbl_giaovien] ([MAGV])
+GO
+ALTER TABLE [dbo].[tbl_tkb]  WITH CHECK ADD  CONSTRAINT [fk_foreign] FOREIGN KEY([MAGV])
+REFERENCES [dbo].[tbl_user] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_tkb] CHECK CONSTRAINT [fk_foreign]
+GO
